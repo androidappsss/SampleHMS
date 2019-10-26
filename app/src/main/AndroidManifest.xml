@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.jongzazaal.samplehms.huawei">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -8,7 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,6 +19,37 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--        Huawei Mobile Service-->
+        <!--If you want to access HMS Core Push SDK, you need to register this service. In this case, inherit the com.huawei.hms.push.HmsMessageService class to implement its method to define the service class (such as YourHmsMessageService).-->
+        <service
+            android:name=".pushkit.MyHmsMessageService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.huawei.push.action.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!--        (Mandatory) Add provider under the application node. UpdateProvider is for upgrading HMS, and is provided to the system installer that reads upgrade files.-->
+        <provider
+            android:name="com.huawei.hms.update.provider.UpdateProvider"
+            android:authorities="com.jongzazaal.samplehms.huawei.hms.update.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+        </provider>
+
+        <!--            ● (Optional) If you want to use HUAWEI Push on non-Huawei devices, you only need to declare the use of HmsMsgService.-->
+        <service
+            android:name="com.huawei.hms.support.api.push.service.HmsMsgService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":pushservice">
+            <intent-filter>
+                <action android:name="com.huawei.push.msg.NOTIFY_MSG" />
+                <action android:name="com.huawei.push.msg.PASSBY_MSG" />
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>

@@ -1,0 +1,11 @@
+{
+	"client":{
+		"cp_id":"40066000000030887",
+		"product_id":"9105385871708179953",
+		"client_id":"216337436588901568",
+		"client_secret":"9FCEFF98709DDE356070F3B602DA97E3B4C245DD07AC208F79E60C2A48DF4C93",
+		"app_id":"101281135",
+		"package_name":"com.jongzazaal.samplehms.huawei"
+	},
+	"configuration_version":"1.0"
+}

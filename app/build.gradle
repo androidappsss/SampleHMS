@@ -52,7 +52,9 @@ android {
     productFlavors {
         production {
             buildConfigField "boolean", "IS_PRODUCTION", "true"
+//            buildConfigField "string", "huawei_app_id", "101281135"
             resValue "string", "app_name", "SampleHMS"
+            resValue "string", "huawei_app_id", "101281135"
 //            applicationId "com.jongzazaal.sjapplication2"
             proguardFile 'proguard-rules.pro'
         }
@@ -73,6 +75,14 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    implementation 'com.huawei.hms:base:3.0.0.303'
+    implementation 'com.huawei.hms:iap:3.0.0.303'
+    implementation 'com.huawei.hms:sns:3.0.0.303'
+    implementation 'com.huawei.hms:hwid:3.0.0.303'
     implementation 'com.huawei.hms:push:3.0.0.303'
+    implementation 'com.huawei.hms:opendevice:3.0.0.303'
+    implementation 'com.huawei.hms:game:3.0.0.303'
+
+    implementation 'com.google.code.gson:gson:2.8.6'
 
 }
